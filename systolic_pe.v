@@ -7,9 +7,11 @@ module systolic_pe(
   acc_out, data_out, weight_out
 );
 
+  // Paramterization of the MAC
   parameter data_size = 8;
   parameter acc_width = 32;
  
+  // I/O 
   input wire clk;
   input wire reset;
   input wire cntrl;
@@ -26,13 +28,13 @@ module systolic_pe(
   output reg o_stb;
   output reg o_busy;
 
-  // Internal registers
+  // Internal registers for data storage in between cycles
   reg [data_size + data_size - 1:0] mul_result; 
   reg [acc_width - 1:0] acc_reg;                 
   reg [data_size - 1:0] weight_reg;
   reg [data_size - 1:0] data_reg;
   
-  // State definition
+  // State definition for the state machine
   localparam IDLE = 3'b000;
   localparam PROCESSING1 = 3'b001;
   localparam PROCESSING2 = 3'b010;

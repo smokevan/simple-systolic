@@ -1,8 +1,5 @@
-# This file is public domain, it can be freely copied without restrictions.
-# SPDX-License-Identifier: CC0-1.0
-
 # test_systolic_pe.py
-
+# Implemented with help of Claude 3.7 Sonnet LLM -- used for understanding cocoTB framework.
 import random
 import cocotb
 from cocotb.clock import Clock
@@ -43,7 +40,7 @@ async def test_basic_mac_operation(dut):
     """Test basic MAC functionality with simple values"""
     
     # Create and start the clock
-    clock = Clock(dut.clk, 10, units="step")
+    clock = Clock(dut.clk, 10, units="us")
     cocotb.start_soon(clock.start())
     
     # Reset the design
@@ -120,7 +117,7 @@ async def test_pipeline_flow(dut):
     """Test continuous flow of data through the pipeline with better diagnostics"""
     
     # Create and start the clock
-    clock = Clock(dut.clk, 10, units="step")
+    clock = Clock(dut.clk, 10, units="us")
     cocotb.start_soon(clock.start())
     
     # Reset the design
@@ -158,7 +155,7 @@ async def test_realistic_backpressure(dut):
     """Test how the PE handles backpressure in realistic systolic array scenarios"""
     
     # Create and start the clock
-    clock = Clock(dut.clk, 10, units="step")
+    clock = Clock(dut.clk, 10, units="us")
     cocotb.start_soon(clock.start())
     
     # Reset the design
